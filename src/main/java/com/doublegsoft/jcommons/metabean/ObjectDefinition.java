@@ -359,6 +359,20 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     options.put(key, value);
   }
 
+  public void addLabelledOption(String label, String key, String value) {
+    String rename = key;
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      options = new HashMap<>();
+      labelledOptions.put(label, options);
+    }
+    for (int i = 0; i < 10; i++) {
+      if (!options.containsKey(key + "_" + i)) {
+        options.put(key + "_" + i, value);
+      }
+    }
+  }
+
   public String getLabelledOption(String label, String key) {
     Map<String, String> options = labelledOptions.get(label);
     if (options == null) {
@@ -373,9 +387,9 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     if (options == null) {
       return new ArrayList<>();
     }
-    for (Map.Entry<String,String> entry : options.entrySet()) {
-      if (entry.getKey().startsWith(key)) {
-        retVal.add(entry.getValue());
+    for (int i = 0; i < 10; i++) {
+      if (options.containsKey(key + "_" + i)) {
+        retVal.add(options.get(key + "_" + i));
       }
     }
     return retVal;
