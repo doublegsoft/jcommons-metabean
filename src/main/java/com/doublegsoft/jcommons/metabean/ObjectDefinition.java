@@ -350,6 +350,37 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     }
   }
 
+  public void setLabelledOption(String label, String key, String value) {
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      options = new HashMap<>();
+      labelledOptions.put(label, options);
+    }
+    options.put(key, value);
+  }
+
+  public String getLabelledOption(String label, String key) {
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      return null;
+    }
+    return options.get(key);
+  }
+
+  public List<String> getLabelledOptionAsList(String label, String key) {
+    List<String> retVal = new ArrayList<>();
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      return new ArrayList<>();
+    }
+    for (Map.Entry<String,String> entry : options.entrySet()) {
+      if (entry.getKey().startsWith(key)) {
+        retVal.add(entry.getValue());
+      }
+    }
+    return retVal;
+  }
+
   public void setSingular(String singular) {
     this.singular = singular;
   }
