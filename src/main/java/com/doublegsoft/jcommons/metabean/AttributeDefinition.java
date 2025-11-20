@@ -22,15 +22,7 @@ import com.doublegsoft.jcommons.metabean.type.ObjectType;
 import com.doublegsoft.jcommons.utils.Inflector;
 import com.doublegsoft.jcommons.utils.Strings;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Defines meta-attributes for any attribute in object.
@@ -456,6 +448,51 @@ public class AttributeDefinition implements Definition, Serializable {
     } else {
       labelledOptions.put(label, options);
     }
+  }
+
+  public void setLabelledOption(String label, String key, String value) {
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      options = new HashMap<>();
+      labelledOptions.put(label, options);
+    }
+    options.put(key, value);
+  }
+
+  public void addLabelledOption(String label, String key, String value) {
+    String rename = key;
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      options = new HashMap<>();
+      labelledOptions.put(label, options);
+    }
+    for (int i = 0; i < 10; i++) {
+      if (!options.containsKey(key + "_" + i)) {
+        options.put(key + "_" + i, value);
+      }
+    }
+  }
+
+  public String getLabelledOption(String label, String key) {
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      return null;
+    }
+    return options.get(key);
+  }
+
+  public List<String> getLabelledOptionAsList(String label, String key) {
+    List<String> retVal = new ArrayList<>();
+    Map<String, String> options = labelledOptions.get(label);
+    if (options == null) {
+      return new ArrayList<>();
+    }
+    for (int i = 0; i < 10; i++) {
+      if (options.containsKey(key + "_" + i)) {
+        retVal.add(options.get(key + "_" + i));
+      }
+    }
+    return retVal;
   }
 
   @Override
