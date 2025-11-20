@@ -469,6 +469,7 @@ public class AttributeDefinition implements Definition, Serializable {
     for (int i = 0; i < 10; i++) {
       if (!options.containsKey(key + "_" + i)) {
         options.put(key + "_" + i, value);
+        break;
       }
     }
   }

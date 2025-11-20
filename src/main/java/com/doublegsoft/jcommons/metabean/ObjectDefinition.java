@@ -369,6 +369,7 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     for (int i = 0; i < 10; i++) {
       if (!options.containsKey(key + "_" + i)) {
         options.put(key + "_" + i, value);
+        break;
       }
     }
   }
