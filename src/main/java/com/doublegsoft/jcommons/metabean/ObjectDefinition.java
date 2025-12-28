@@ -219,6 +219,18 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     return null;
   }
 
+  public AttributeDefinition getAttribute(String attrname) {
+    if (attrname == null) {
+      return null;
+    }
+    for (AttributeDefinition attr : attrDefs) {
+      if (attrname.equals(attr.getName())) {
+        return attr;
+      }
+    }
+    return null;
+  }
+
   public ObjectRole getRole() {
     return role;
   }
