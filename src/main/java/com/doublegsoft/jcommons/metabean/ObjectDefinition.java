@@ -405,6 +405,13 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
         retVal.add(options.get(key + "_" + i));
       }
     }
+    if (retVal.isEmpty()) {
+      String val = options.get(key);
+      if (val == null) {
+        return retVal;
+      }
+      retVal.add(val);
+    }
     return retVal;
   }
 

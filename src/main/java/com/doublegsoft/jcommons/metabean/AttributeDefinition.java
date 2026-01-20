@@ -493,6 +493,13 @@ public class AttributeDefinition implements Definition, Serializable {
         retVal.add(options.get(key + "_" + i));
       }
     }
+    if (retVal.isEmpty()) {
+      String val = options.get(key);
+      if (val == null) {
+        return retVal;
+      }
+      retVal.add(val);
+    }
     return retVal;
   }
 
