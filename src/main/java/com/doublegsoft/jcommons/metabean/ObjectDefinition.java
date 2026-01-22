@@ -219,6 +219,16 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     return null;
   }
 
+  public AttributeDefinition[] getIdentifiableAttributes() {
+    List<AttributeDefinition> retVal = new ArrayList<>();
+    for (AttributeDefinition attr : attrDefs) {
+      if (attr.isIdentifiable()) {
+        retVal.add(attr);
+      }
+    }
+    return retVal.toArray(new AttributeDefinition[0]);
+  }
+
   public AttributeDefinition getAttribute(String attrname) {
     if (attrname == null) {
       return null;
