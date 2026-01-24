@@ -44,7 +44,7 @@ public class AttributeDefinition implements Definition, Serializable {
   /**
    * the attribute name.
    */
-  private final String name;
+  private String name;
 
   /**
    * the attribute alias name.
@@ -126,6 +126,10 @@ public class AttributeDefinition implements Definition, Serializable {
       return name;
     }
     return persistenceName;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public ObjectType getType() {
