@@ -82,6 +82,8 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
    */
   private final Map<String, Map<String, String>> labelledOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
+  private final Map<String, Object> labelledData = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
   /**
    * the object role.
    */
@@ -478,6 +480,14 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     }
     attrDefs.add(attr);
     attrDefCache.add(attr);
+  }
+
+  public void addLabelledData(String label, Object data) {
+    labelledData.put(label, data);
+  }
+
+  public Object getLabelledData(String label) {
+    return labelledData;
   }
 
   void addBehavior(BehaviorDefinition bx) {
