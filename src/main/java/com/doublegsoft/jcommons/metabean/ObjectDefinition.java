@@ -487,7 +487,7 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
   }
 
   public Object getLabelledData(String label) {
-    return labelledData;
+    return labelledData.get(label);
   }
 
   void addBehavior(BehaviorDefinition bx) {
