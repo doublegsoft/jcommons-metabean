@@ -482,7 +482,7 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     attrDefCache.add(attr);
   }
 
-  public void addLabelledData(String label, Object data) {
+  public void setLabelledData(String label, Object data) {
     labelledData.put(label, data);
   }
 
