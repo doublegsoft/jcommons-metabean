@@ -53,6 +53,8 @@ public class PrimitiveType implements ObjectType, Serializable {
   public static final String LONG = "long";
   
   private final String name;
+
+  private String lengthName;
   
   private int length;
   
@@ -91,6 +93,14 @@ public class PrimitiveType implements ObjectType, Serializable {
 
   public void setScale(int scale) {
     this.scale = scale;
+  }
+
+  public String getLengthName() {
+    return lengthName;
+  }
+
+  public void setLengthName(String lengthName) {
+    this.lengthName = lengthName;
   }
 
   @Override
