@@ -40,6 +40,8 @@ public class CollectionType implements ObjectType, Serializable {
    */
   private final String name;
 
+  private String countedName;
+
   /**
    * component type in container.
    */
@@ -81,4 +83,11 @@ public class CollectionType implements ObjectType, Serializable {
     return name;
   }
 
+  public String getCountedName() {
+    return countedName;
+  }
+
+  public void setCountedName(String countedName) {
+    this.countedName = countedName;
+  }
 }
