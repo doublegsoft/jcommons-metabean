@@ -74,4 +74,8 @@ public interface ObjectType {
     default boolean isAnonymous() {
       return getClass().equals(AnonymousType.class);
     }
+
+    default boolean isConstant() {
+    return getClass().equals(ConstantType.class);
+  }
 }
