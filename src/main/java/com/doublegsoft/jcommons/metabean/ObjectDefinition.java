@@ -18,6 +18,7 @@
  */
 package com.doublegsoft.jcommons.metabean;
 
+import com.doublegsoft.jcommons.metabean.type.CollectionType;
 import com.doublegsoft.jcommons.metabean.type.CustomType;
 import com.doublegsoft.jcommons.metabean.type.ObjectType;
 import com.doublegsoft.jcommons.utils.Inflector;
@@ -437,6 +438,36 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
 
   public void setScript(String script) {
     this.script = script;
+  }
+
+  public List<AttributeDefinition> getCustomAttributes() {
+    List<AttributeDefinition> retVal = new ArrayList<>();
+    for (AttributeDefinition attr : attrDefs) {
+      if (attr.getType().isCustom()) {
+        retVal.add(attr);
+      }
+    }
+    return retVal;
+  }
+
+  public List<AttributeDefinition> getCollectionAttributes() {
+    List<AttributeDefinition> retVal = new ArrayList<>();
+    for (AttributeDefinition attr : attrDefs) {
+      if (attr.getType().isCollection()) {
+        retVal.add(attr);
+      }
+    }
+    return retVal;
+  }
+
+  public ObjectDefinition getReferencingObject(AttributeDefinition attr) {
+    if (attr.getType().isCustom()) {
+      return model.findObjectByName(attr.getType().getName());
+    } else if (attr.getType().isCollection()) {
+      CollectionType colltype = (CollectionType) attr.getType();
+      return model.findObjectByName(colltype.getComponentType().getName());
+    }
+    return null;
   }
 
   @Override
