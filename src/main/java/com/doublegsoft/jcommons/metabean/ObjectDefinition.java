@@ -440,24 +440,24 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
     this.script = script;
   }
 
-  public List<AttributeDefinition> getCustomAttributes(ObjectDefinition obj) {
+  public  AttributeDefinition[] getCustomAttributes(ObjectDefinition obj) {
     List<AttributeDefinition> retVal = new ArrayList<>();
     for (AttributeDefinition attr : attrDefs) {
       if (attr.getType().isCustom() && attr.getType().getName().equals(obj.getName())) {
         retVal.add(attr);
       }
     }
-    return retVal;
+    return retVal.toArray(new AttributeDefinition[0]);
   }
 
-  public List<AttributeDefinition> getCustomAttributes() {
+  public  AttributeDefinition[] getCustomAttributes() {
     List<AttributeDefinition> retVal = new ArrayList<>();
     for (AttributeDefinition attr : attrDefs) {
       if (attr.getType().isCustom()) {
         retVal.add(attr);
       }
     }
-    return retVal;
+    return retVal.toArray(new AttributeDefinition[0]);
   }
 
   public List<AttributeDefinition> getCollectionAttributes() {
