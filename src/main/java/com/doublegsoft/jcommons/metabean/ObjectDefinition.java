@@ -581,4 +581,9 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
   void addRelationship(RelationshipDefinition relationship) {
     relationships.add(relationship);
   }
+
+  @Override
+  public boolean isCustom() {
+    return true;
+  }
 }
