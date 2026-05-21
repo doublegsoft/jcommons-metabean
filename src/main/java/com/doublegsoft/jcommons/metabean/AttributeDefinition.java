@@ -541,4 +541,30 @@ public class AttributeDefinition implements Definition, Serializable {
     return true;
   }
 
+  public AttributeDefinition clone(ObjectDefinition parent) {
+    AttributeDefinition retVal = new AttributeDefinition(name, parent);
+    retVal.getLabelledOptions().putAll(getLabelledOptions());
+    retVal.setType(type);
+    retVal.setAlias(alias);
+    retVal.setPlural(plural);
+    retVal.setSingular(singular);
+    retVal.setText(text);
+    retVal.setUnit(unit);
+    retVal.setPersistenceName(persistenceName);
+    retVal.getConstraint().setDefaultValue(constraint.getDefaultValue());
+    retVal.getConstraint().setMaxSize(constraint.getMaxSize());
+    retVal.getConstraint().setIdentifiable(constraint.isIdentifiable());
+    retVal.getConstraint().setDomainType(constraint.getDomainType());
+    retVal.getConstraint().setDataType(constraint.getDataType());
+    retVal.getConstraint().setMinSize(constraint.getMinSize());
+    retVal.getConstraint().setMinValue(constraint.getMinValue());
+    retVal.getConstraint().setNullable(constraint.isNullable());
+    retVal.getConstraint().setReadonly(constraint.isReadonly());
+    retVal.getConstraint().setScale(constraint.getScale());
+    retVal.getConstraint().setSystem(constraint.isSystem());
+    retVal.getConstraint().setUnique(constraint.isUnique());
+    retVal.getConstraint().setVisible(constraint.isVisible());
+    return retVal;
+  }
+
 }
