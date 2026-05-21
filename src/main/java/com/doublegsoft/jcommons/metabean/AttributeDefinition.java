@@ -542,28 +542,81 @@ public class AttributeDefinition implements Definition, Serializable {
   }
 
   public AttributeDefinition clone(ObjectDefinition parent) {
-    AttributeDefinition retVal = new AttributeDefinition(name, parent);
+    AttributeDefinition retVal = parent.getAttribute(name);
+    if (retVal == null) {
+      retVal = new AttributeDefinition(name, parent);
+    }
     retVal.getLabelledOptions().putAll(getLabelledOptions());
     retVal.setType(type);
-    retVal.setAlias(alias);
-    retVal.setPlural(plural);
-    retVal.setSingular(singular);
-    retVal.setText(text);
-    retVal.setUnit(unit);
-    retVal.setPersistenceName(persistenceName);
-    retVal.getConstraint().setDefaultValue(constraint.getDefaultValue());
-    retVal.getConstraint().setMaxSize(constraint.getMaxSize());
-    retVal.getConstraint().setIdentifiable(constraint.isIdentifiable());
-    retVal.getConstraint().setDomainType(constraint.getDomainType());
-    retVal.getConstraint().setDataType(constraint.getDataType());
-    retVal.getConstraint().setMinSize(constraint.getMinSize());
-    retVal.getConstraint().setMinValue(constraint.getMinValue());
-    retVal.getConstraint().setNullable(constraint.isNullable());
-    retVal.getConstraint().setReadonly(constraint.isReadonly());
-    retVal.getConstraint().setScale(constraint.getScale());
-    retVal.getConstraint().setSystem(constraint.isSystem());
-    retVal.getConstraint().setUnique(constraint.isUnique());
-    retVal.getConstraint().setVisible(constraint.isVisible());
+    if (retVal.alias == null) {
+      retVal.setAlias(getAlias());
+    }
+    if (retVal.plural == null) {
+      retVal.setPlural(getPlural());
+    }
+    if (retVal.singular == null) {
+      retVal.setSingular(getSingular());
+    }
+    if (retVal.text == null) {
+      retVal.setText(getText());
+    }
+    if (retVal.unit == null) {
+      retVal.setUnit(getUnit());
+    }
+    if (retVal.persistenceName == null) {
+      retVal.setPersistenceName(getPersistenceName());
+    }
+    if (retVal.getConstraint().getDefaultValue() == null) {
+      retVal.getConstraint().setDefaultValue(constraint.getDefaultValue());
+    }
+
+    if (retVal.getConstraint().getMaxSize() == 0) {
+      retVal.getConstraint().setMaxSize(constraint.getMaxSize());
+    }
+
+    if (!retVal.getConstraint().isIdentifiable()) {
+      retVal.getConstraint().setIdentifiable(constraint.isIdentifiable());
+    }
+
+    if (retVal.getConstraint().getDomainType() == null) {
+      retVal.getConstraint().setDomainType(constraint.getDomainType());
+    }
+
+    if (retVal.getConstraint().getDataType() == null) {
+      retVal.getConstraint().setDataType(constraint.getDataType());
+    }
+
+    if (retVal.getConstraint().getMinSize() == 0) {
+      retVal.getConstraint().setMinSize(constraint.getMinSize());
+    }
+
+    if (retVal.getConstraint().getMinValue() == null) {
+      retVal.getConstraint().setMinValue(constraint.getMinValue());
+    }
+
+    if (!retVal.getConstraint().isNullable()) {
+      retVal.getConstraint().setNullable(constraint.isNullable());
+    }
+
+    if (!retVal.getConstraint().isReadonly()) {
+      retVal.getConstraint().setReadonly(constraint.isReadonly());
+    }
+
+    if (retVal.getConstraint().getScale() == 0) {
+      retVal.getConstraint().setScale(constraint.getScale());
+    }
+
+    if (!retVal.getConstraint().isSystem()) {
+      retVal.getConstraint().setSystem(constraint.isSystem());
+    }
+
+    if (!retVal.getConstraint().isUnique()) {
+      retVal.getConstraint().setUnique(constraint.isUnique());
+    }
+
+    if (!retVal.getConstraint().isVisible()) {
+      retVal.getConstraint().setVisible(constraint.isVisible());
+    }
     return retVal;
   }
 
