@@ -54,7 +54,7 @@ public class PrimitiveType implements ObjectType, Serializable {
   
   private final String name;
 
-  private String lengthName;
+  private String lengthVariable;
   
   private int length;
   
@@ -97,12 +97,12 @@ public class PrimitiveType implements ObjectType, Serializable {
     this.scale = scale;
   }
 
-  public String getLengthName() {
-    return lengthName;
+  public String getLengthVariable() {
+    return lengthVariable;
   }
 
-  public void setLengthName(String lengthName) {
-    this.lengthName = lengthName;
+  public void setLengthVariable(String lengthVariable) {
+    this.lengthVariable = lengthVariable;
   }
 
   public String getSeparator() {
