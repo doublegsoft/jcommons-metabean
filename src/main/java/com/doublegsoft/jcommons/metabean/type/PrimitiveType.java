@@ -63,6 +63,8 @@ public class PrimitiveType implements ObjectType, Serializable {
   private int scale;
 
   private String separator;
+
+  private String objectName;
   
   public PrimitiveType(String name) {
     this.name = name;
@@ -111,6 +113,14 @@ public class PrimitiveType implements ObjectType, Serializable {
 
   public void setSeparator(String separator) {
     this.separator = separator;
+  }
+
+  public String getObjectName() {
+    return objectName;
+  }
+
+  public void setObjectName(String objectName) {
+    this.objectName = objectName;
   }
 
   @Override
