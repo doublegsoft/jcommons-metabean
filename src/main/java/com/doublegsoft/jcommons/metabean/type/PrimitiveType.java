@@ -36,8 +36,6 @@ public class PrimitiveType implements ObjectType, Serializable {
   
   private static final long serialVersionUID = -1L;
 
-  public static final String STRINGS = "strings";
-
   public static final String STRING = "string";
   
   public static final String NUMBER = "number";
