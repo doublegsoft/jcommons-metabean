@@ -620,4 +620,7 @@ public class AttributeDefinition implements Definition, Serializable {
     return retVal;
   }
 
+  public boolean isConstantValue() {
+    return false;
+  }
 }
