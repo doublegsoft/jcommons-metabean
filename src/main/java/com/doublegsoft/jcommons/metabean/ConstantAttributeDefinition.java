@@ -30,4 +30,8 @@ public class ConstantAttributeDefinition extends AttributeDefinition {
   public boolean isConstantValue() {
     return true;
   }
+
+  public Object getValue() {
+    return value;
+  }
 }
