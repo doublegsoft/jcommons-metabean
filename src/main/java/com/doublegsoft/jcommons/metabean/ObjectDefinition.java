@@ -240,6 +240,10 @@ public class ObjectDefinition implements Definition, ObjectType, Cloneable, Seri
       if (attrname.equals(attr.getName())) {
         return attr;
       }
+      String fullAttrName = name + "_" + attr.getName();
+      if (attrname.equals(fullAttrName)) {
+        return attr;
+      }
     }
     return null;
   }
